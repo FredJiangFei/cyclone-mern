@@ -14,4 +14,17 @@ router.post('/', async (req, res) => {
   });
 });
 
+router.get('/', async (req, res) => {
+    const page = parseInt(req.query.page);
+    const pageSize = parseInt(req.query.pageSize);
+    const totalCount = await User.count();
+    const users = await User.find({})
+      .skip(pageSize * page - pageSize)
+      .limit(pageSize);
+    res.send({
+      data: users,
+      totalCount: totalCount,
+    });
+  });
+
 module.exports = router;
