@@ -1,0 +1,5 @@
+{
+  "db": "mongodb://localhost/cyclone",
+  "port": "3001",
+  "jwtPrivateKey": "12345"
+}
